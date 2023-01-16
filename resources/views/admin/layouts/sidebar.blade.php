@@ -13,7 +13,7 @@
                 <img src="{{asset('admin/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="{{url('admin/dashboard')}}" class="d-block">Alexander Pierce</a>
+                <a href="{{url('admin/dashboard')}}" class="d-block">{{Auth::user()->name}}</a>
             </div>
         </div>
 
@@ -22,7 +22,7 @@
                 data-accordion="false">
 
                 <li class="nav-item">
-                    <a href="dashbord.html" class="nav-link active">
+                    <a href="{{url('admin/dashboard')}}" class="nav-link {{setActiveClass('admin/dashboard')}}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dasboard
@@ -31,7 +31,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="../tables/buyer.html" class="nav-link">
+                    <a href="{{url('admin/buyer')}}" class="nav-link {{setActiveClass('admin/buyer')}}">
                         <i class="nav-icon fas fa-user-circle"></i>
                         <p>
                             Buyer
@@ -40,7 +40,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="../tables/Seller.html" class="nav-link">
+                    <a href="{{url('admin/seller')}}" class="nav-link {{setActiveClass('admin/seller')}}">
                         <i class="nav-icon fas fa-user-circle"></i>
                         <p>
                             Seller
@@ -50,17 +50,15 @@
 
 
                 <li class="nav-item">
-                    <a href="../tables/tenent.html" class="nav-link">
+                    <a href="{{url('admin/tenant')}}" class="nav-link {{setActiveClass('admin/tenant')}}">
                         <i class="nav-icon fas fa-user-circle"></i>
                         <p>
                             Tenant
                         </p>
                     </a>
                 </li>
-
-
                 <li class="nav-item">
-                    <a href="../tables/land-loard.html" class="nav-link">
+                    <a href="{{url('admin/landloard')}}" class="nav-link {{setActiveClass('admin/landloard')}}">
                         <i class="nav-icon fas fa-user-circle"></i>
                         <p>
                             Land loard
@@ -69,35 +67,42 @@
                 </li>
 
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-table"></i>
                         <p>
                             List
                         </p>
                     </a>
-                </li>
+                </li> --}}
 
-
+                @hasrole('admin')
                 <li class="nav-item">
-                    <a href="../tables/employee.html" class="nav-link">
+                    <a href="{{url('admin/employee')}}" class="nav-link {{setActiveClass('admin/employee')}}">
                         <i class="nav-icon fas fa-user-circle"></i>
                         <p>
                             Employee
                         </p>
                     </a>
                 </li>
+                @endhasrole
+                <li class="nav-item">
+                    <a href="{{url('admin/notification')}}" class="nav-link {{setActiveClass('admin/notification')}}">
+                        <i class="nav-icon fas fa-bell"></i>
+                        <p>
+                            Notification <span class="badge badge-warning">@if (AllNotification()>0){{AllNotification()}} @endif</span>
+                        </p>
+                    </a>
+                </li>
 
                 <li class="nav-item">
-                    <a href="../examples/login.html" class="nav-link">
+                    <a href="{{url('admin/logout')}}" class="nav-link">
                         <i class="nav-icon fas fa-lock-open"></i>
                         <p>
                             Logout
                         </p>
                     </a>
                 </li>
-
-
             </ul>
         </nav>
 

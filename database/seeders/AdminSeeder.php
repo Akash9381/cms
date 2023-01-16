@@ -20,7 +20,7 @@ class AdminSeeder extends Seeder
         $user = User::create([
             'name'=>'Admin',
             'email'=>'cms@addressmaker.com',
-            'password'=>Hash::make('admin@123'),
+            'password'=>Hash::make('3z4p6PDJFtKaj5y'),
             'email_verified_at'=>Carbon::now()
         ]);
         $user->assignRole('admin');
